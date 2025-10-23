@@ -1,0 +1,24 @@
+sudo apt update
+sudo apt install pigpio
+sudo systemctl enable pigpiod
+sudo systemctl start pigpiod
+
+
+
+include: pigpio.h   unistd.h for usleep
+
+if (gpioInitialise() < 0) {
+  std::cerr << "Failed to initialize pigpio\n";
+  return 1;
+}
+
+const int pin = GPIO PIN
+gpioSetMode(pin, PI_OUTPUT or PI_INPUT)
+gpioSetPullUpDown(pin for button or similar, PI_PUD_UP);
+
+gpioRead(pin) - 0 or 1 (low or high)
+gpioWrite(pin, 0 or 1)
+
+usleep(1000 is 1ms)
+
+gpioTerminate() - end
